@@ -9,6 +9,11 @@ if [ -f "${SHARED_DIR}/skip.txt" ]; then
 fi
 
 ECO_CI_CD_DIR=/eco-ci-cd
+if [[ -n "${ECO_CI_CD_REPO}" ]]; then
+  echo "Cloning custom eco-ci-cd from ${ECO_CI_CD_REPO} (branch: ${ECO_CI_CD_BRANCH:-main})"
+  ECO_CI_CD_DIR=/tmp/custom-eco-ci-cd
+  git clone --depth 1 --branch "${ECO_CI_CD_BRANCH:-main}" "${ECO_CI_CD_REPO}" "${ECO_CI_CD_DIR}"
+fi
 ECO_CI_CD_INVENTORY_PATH="${ECO_CI_CD_DIR}/inventories/cnf"
 
 process_inventory() {

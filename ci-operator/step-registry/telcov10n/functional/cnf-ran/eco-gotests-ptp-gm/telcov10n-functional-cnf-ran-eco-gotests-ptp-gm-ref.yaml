@@ -32,6 +32,12 @@ ref:
   - name: PTP_CYCLE_CONFIGS
     default: ""
     documentation: JSON array of PTP cycle configurations, each with a name and list of policy YAML URLs
+  - name: ECO_CI_CD_REPO
+    default: ""
+    documentation: Custom eco-ci-cd git repo URL. When set, clones this repo over the default /eco-ci-cd image content (for temporary testing of a fork/branch).
+  - name: ECO_CI_CD_BRANCH
+    default: ""
+    documentation: Branch to clone when ECO_CI_CD_REPO is set. Defaults to main if not specified.
   - name: ECO_CNF_RAN_TEST_IMAGE
     default: "registry.access.redhat.com/ubi9/ubi:latest"
     documentation: Container image used as ECO_CNF_RAN_TEST_IMAGE in eco-gotests. Overrides the default quay.io/openshift-kni/cnf-tests:4.8 which may not be mirrored in all environments.
